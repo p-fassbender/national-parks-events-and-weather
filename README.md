@@ -33,6 +33,7 @@ GIVEN a parks dashboard with form inputs
 * WHEN I search for a state THEN I am presented with a list of national parks found in that state
     * should we have cards with image and name or just a list of names
 * WHEN I click on a national park THEN I am presented with information about the park and weather forecast
+* WHEN I am viewing the information page THEN I have a button to take me back to the homepage
 * WHEN I view the national park information THEN I see and image of the park, a description, available activities, entrance fee, address etc.
 * WHEN I view future weather conditions for that city THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 * WHEN I click a national park THEN it is saved into a list of recently viewed parks
