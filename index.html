@@ -23,6 +23,27 @@
             <!-- left column - form and history-->
             <div class = "cell large-4">
 
+                <!--modal-->
+                <section class="reveal" data-reveal id="user-form">
+
+                    <form id="state-search-form">
+
+                        <label for="state">
+                            Search a state by two letter abbreviation to generate a list of National Parks in that state
+                        </label>
+
+                        <input type="text" id="state" name="state" placeholder="Enter state abbr" data-open="user-form">
+
+                        <button >
+                            Search
+                        </button>
+
+                    </form>
+
+
+
+                </section>
+
             </div>
 
             <!-- right column - api search results-->
