@@ -7,7 +7,7 @@ var getParkInfo = function (event) {
     var stateAbbr = stateInputEl.value.trim();  
     
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
-    var apiUrl = "uhttps://developer.nps.gov/api/v1/parks?" + state + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "uhttps://developer.nps.gov/api/v1/parks?" + stateAbbr + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
     fetch(apiUrl)
         .then(function(response) {
