@@ -8,8 +8,8 @@
 
     <title>National Parks</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+
     <link rel="stylesheet" href="./assets/style.css" />
 
 </head>
@@ -18,10 +18,31 @@
     <header>
         <h1>National Parks Project!</h1>
     </header>
-    <main>
+    <main> 
+
+        <!--modal-->
+
         <div class = "grid-x">
             <!-- left column - form and history-->
             <div class = "cell large-4">
+
+                <button data-open="user-form">
+                    Click to open a modal and enter a state in order to search for National Parks
+                </button>
+
+                <form class="reveal" data-reveal id="user-form">
+
+                    <label for="state">
+                        Search a state by two letter abbreviation to generate a list of National Parks in that state
+                    </label>
+        
+                    <input type="text" id="state" name="state" placeholder="Enter state abbr">
+        
+                    <button >
+                        Search
+                    </button>
+        
+                </form>
 
             </div>
 
@@ -31,6 +52,16 @@
             </div>
         </div>
     </main>
+
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+
+    <script>$(document).foundation();</script>
 
     <script src="./assets/script.js"></script>
 </body>
