@@ -20,7 +20,6 @@
     </header>
     <main> 
 
-        <!--modal-->
 
         <div class = "grid-x">
             <!-- left column - form and history-->
@@ -30,6 +29,8 @@
                     Click to open a modal and enter a state in order to search for National Parks
                 </button>
 
+                <!--modal-->
+
                 <form class="reveal" data-reveal id="user-form">
 
                     <label for="state">
@@ -38,7 +39,7 @@
         
                     <input type="text" id="state" name="state" placeholder="Enter state abbr">
         
-                    <button >
+                    <button data-close>
                         Search
                     </button>
         
@@ -48,6 +49,10 @@
 
             <!-- right column - api search results-->
             <div class = "cell large-8">
+
+                <div class="4 large-8" id="invalid-input">
+                    
+                </div>
 
             </div>
         </div>
