@@ -1,19 +1,37 @@
-var searchFormEl = document.getElementById("state-search-form");
+var searchFormEl = document.getElementById("user-form");
 
 //get the modal form to accept a state and populate the container 2 info
 var getParkInfo = function (event) {
 
+    event.preventDefault();
+
     var stateInputEl = document.querySelector("#state");
-    var stateAbbr = stateInputEl.value.trim();  
+    var stateAbbr = (stateInputEl.value.trim()).toUpperCase();  
+
+    console.log(stateAbbr);
     
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
-    var apiUrl = "uhttps://developer.nps.gov/api/v1/parks?" + stateAbbr + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?" + stateAbbr + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA&limit=20";
 
     fetch(apiUrl)
         .then(function(response) {
             if (response.ok) {
-                response.json().then(generateCards(data));
+                response.json().then(function(data) {
+
+                    //this function on the following line was Preston's first issue
+                    generateCards(data);
+
+                    if (data.total > 20) {
+                        //create a link with the following href, and append to  I don't believe there is an L at the end of htm
+                        var cardContainer = document.querySelector(".large-8");
+                        var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
+                        cardContainer.innerHTML = theHref;                
+                    }
+                });
             }
+            //else if () {               
+                //if the form entry is not a valid two letter state initial, don't accpt input and let user know
+            //};
         })
         .catch(function(error) {
             //notice this '.catch()' getting chained onto the end of the '.then()' method
@@ -22,21 +40,25 @@ var getParkInfo = function (event) {
 }
 
 
-    //prevent default reload for form submission
-
-    //make form entry uppercase to match json data
-
-    //if the form entry is not a valid two letter state initial, don't accpt input and let user know
-
     //else
-        
-        //empty container two
+
+var generateCards = function() {
+
+    //Preston volunteered to do this first
+
+    //empty container two
     
-        //take state initials input and filter api data to create an array with that state's park identifier
+    //take state initials input and filter api data to create an array with that state's park identifier
 
             //loop through the array and generate a card for each park
 
             //set href of card to info-page
+
+    //I already added a link to the end of the container, after the cards are generated, that will link to the national park page if
+    //the state returns more than 20 parks
+
+}
+        
 
 //ZACH START
 
