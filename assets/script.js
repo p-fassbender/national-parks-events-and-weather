@@ -73,6 +73,7 @@ var generateCards = function(data) {
         cardGridEl.appendChild(columnEl);
     }
 
+
     //Preston volunteered to do this first, feel free to rename function
 
     //empty container two
