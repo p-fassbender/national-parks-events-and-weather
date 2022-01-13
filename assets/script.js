@@ -32,6 +32,11 @@ var getParkInfo = function (event) {
                     if (data.total > 10) {
                         //create a link with the following href, and append to  I don't believe there is an L at the end of htm
 
+                        //var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
+                        var theHref = document.createElement("a")
+                        theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm')
+                        theHref.innerText = "Link to National Park Service site for your selected state";
+                        cardContainer.appendChild(theHref);
                     }
                     else if (data.total == 0) {
                         $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
@@ -49,18 +54,18 @@ var getParkInfo = function (event) {
 }
 
 //generate card links using api data from getParkInfo
-var generateCards = function(data) {
-
+function generateCards(data) {
+  
     //clear out previous cards
     cardGridEl.innerText="";
+    
+    // loops through the data response from the state code api fetch and creates/displays a card for the national parks in that state
 
     for (let i = 0; i < data.data.length; i++) {
         // gets info from the data response and assigns it to variables
         var parkName = data.data[i].fullName;
         var imgURL = data.data[i].images[0].url;
         var parkCode = data.data[i].parkCode;
-
-        console.log(parkName);
 
         // dynamically create elements that make up the cards 
         var cellEl = document.createElement("div");
@@ -79,7 +84,7 @@ var generateCards = function(data) {
 
         var cardImgEl = document.createElement("img");
         cardImgEl.src = imgURL;
-        cardImgEl.setAttribute("alt", "broken image");
+        cardImgEl.setAttribute("alt", "A beautiful image of the state park");
 
         // append the pieces of the card together and then append them to the page
         cardEl.appendChild(cardDividerEl);
