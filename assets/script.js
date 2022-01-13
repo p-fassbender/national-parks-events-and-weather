@@ -11,21 +11,24 @@ var getParkInfo = function (event) {
     console.log(stateAbbr);
     
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?" + stateAbbr + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA&limit=20";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA&limit=10";
 
     fetch(apiUrl)
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(data) {
 
-                    //this function on the following line was Preston's first issue
+                    //this function on the following line was Preston's first issue. Feel free to rename function
                     generateCards(data);
 
-                    if (data.total > 20) {
+                    if (data.total > 10) {
                         //create a link with the following href, and append to  I don't believe there is an L at the end of htm
                         var cardContainer = document.querySelector(".large-8");
                         var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
                         cardContainer.innerHTML = theHref;                
+                    }
+                    else if (data.total==0) {
+                        $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
                     }
                 });
             }
@@ -44,7 +47,7 @@ var getParkInfo = function (event) {
 
 var generateCards = function() {
 
-    //Preston volunteered to do this first
+    //Preston volunteered to do this first, feel free to rename function
 
     //empty container two
     
@@ -55,7 +58,7 @@ var generateCards = function() {
             //set href of card to info-page
 
     //I already added a link to the end of the container, after the cards are generated, that will link to the national park page if
-    //the state returns more than 20 parks
+    //the state returns more than 10 parks
 
 }
         
