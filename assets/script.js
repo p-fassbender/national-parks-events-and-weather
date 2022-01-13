@@ -53,15 +53,29 @@ var getParkInfo = function (event) {
 
 //else
 
+<<<<<<< HEAD
 function generateCards(data) {
     cardGridEl.innerText="";
     
     // loops through the data response from the state code api fetch and creates/displays a card for the national parks in that state
+=======
+var generateCards = function(data) {
+
+    //clear out previous cards
+    cardGridEl.innerHTML="";
+
+    console.log(data.data.length);
+>>>>>>> a4a5f7761e214c7265dbbbf0a130e0b8eb57d8cd
     for (let i = 0; i < data.data.length; i++) {
         // gets info from the data response and assigns it to variables
         var parkName = data.data[i].fullName;
+<<<<<<< HEAD
         var imgURL = data.data[i].images[0].url;
         var parkCode = data.data[i].parkCode;
+=======
+        //the next line is causing a console error right now
+        var imgURL = data.data[i].images[i].url;
+>>>>>>> a4a5f7761e214c7265dbbbf0a130e0b8eb57d8cd
 
         console.log(parkName);
 
