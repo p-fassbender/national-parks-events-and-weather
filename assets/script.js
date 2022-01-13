@@ -1,4 +1,6 @@
 var searchFormEl = document.getElementById("user-form");
+var cardContainer = document.querySelector("#card-container");
+var cardGridEl = document.querySelector("#cardGrid");
 
 //get the modal form to accept a state and populate the container 2 info
 var getParkInfo = function (event) {
@@ -23,7 +25,7 @@ var getParkInfo = function (event) {
 
                     if (data.total > 10) {
                         //create a link with the following href, and append to  I don't believe there is an L at the end of htm
-                        var cardContainer = document.querySelector(".large-8");
+                        
                         var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
                         cardContainer.innerHTML = theHref;                
                     }
@@ -46,6 +48,31 @@ var getParkInfo = function (event) {
     //else
 
 var generateCards = function(data) {
+    for (let i = 0; i < data.data.length; i++) {
+        var parkName = data.data[i].fullName;
+        var imgURL = data.data[i].images[i].url;
+
+        var columnEl = document.createElement("div");
+        columnEl.className = "column";
+
+        var cardEl = document.createElement("div");
+        cardEl.className = "card";
+        cardEl.setAttribute("style", "width: 300px");
+
+        var cardDividerEl = document.createElement("div");
+        cardDividerEl.className = "card-divider";
+        cardDividerEl.innerHTML = "<h4>" + parkName + "</h4>"
+
+        var cardImgEl = document.createElement("img");
+        cardImgEl.src = imgURL;
+
+        cardEl.appendChild(cardDividerEl);
+        cardEl.appendChild(cardImgEl);
+
+        columnEl.appendChild(cardEl);
+        cardGridEl.appendChild(columnEl);
+    }
+
 
     //Preston volunteered to do this first, feel free to rename function
 
