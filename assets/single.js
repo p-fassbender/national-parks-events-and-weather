@@ -46,12 +46,51 @@ var getParkName = function() {
 var genParkInfo = function(data) {
 
     //select #park-info data div
-    
+    var parkInfoDiv = document.getElementById("park-info");
+    //create ul to append to park data div
+    var parkInfoList = document.createElement("ul");
+    //append to div
+    parkInfoDiv.appendChild(parkInfoList);
 
-    //create li to append to park data div
+    //create array for each data point we want to include
+    var infoArray = [];
 
-    //append park data div to flex container so that its to the left of
-    //images div
+    var parkDescription = data.data[0].description;
+    infoArray.push(parkDescription);
+
+    //create list item for each data point we want to capture
+    var parkAddress = data.data[0].addresses[0];
+    var parkAddressListItem = "Address: " + "\n" + parkAddress.line1 + "\n" + parkAddress.city + ", " + parkAddress.stateCode + " " + parkAddress.postalCode;
+    infoArray.push(parkAddressListItem);
+
+    var parkHours = "Park Hours: " + data.data[0].operatingHours[0].description;
+    //the json data has three "\n"s and it looks goofy
+    var parkHoursString = parkHours.split("\n");
+    var parkHoursListItem = parkHoursString[0] + " " + parkHoursString[3];
+    infoArray.push(parkHoursListItem);
+
+    var parkFees = "Park Fees: " + data.data[0].entranceFees[0].description;
+    infoArray.push(parkFees);
+
+    var parkActivitiesListLength = data.data[0].activities.length;
+    var parkActivities = "Park Activities: ";
+    for (var i = 0; i < parkActivitiesListLength; i ++) {
+        //have to use conditional otherwise end up with comma after last activity
+        if (i==parkActivitiesListLength - 1) {
+            parkActivities+= data.data[0].activities[i].name
+        }
+        else {
+            parkActivities+= data.data[0].activities[i].name + ", ";
+        };
+    }
+    infoArray.push(parkActivities);
+
+    //loop through array creating li's to append to ul
+    for (var i = 0; i < infoArray.length; i++) {
+        var parkListItemEl = document.createElement("li");
+        parkListItemEl.innerText = infoArray[i];
+        parkInfoList.appendChild(parkListItemEl);
+    }
 };
 
 var genParkImages = function(data) {
