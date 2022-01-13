@@ -3,15 +3,16 @@
 
 var getParkName = function() {
 
-    //grab park name from url query string
-    var queryString = document.location.search;
+    //grab park name from url query string. Turn next line on after testing
+    //var queryString = document.location.search;
     //or whatever Preston makes the href include when accessing the second page,
     //if he doesn't specific, I'll use the parkcode
 
-    //parse parkCode from Url
-    var parkCode = queryString.split("=")[1];
+    //parse parkCode from Url Turn next line back on after testing
+    //var parkCode = queryString.split("=")[1];
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    //var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
     fetch(apiUrl).then(function(response) {
         //request was successful
@@ -42,8 +43,10 @@ var getParkName = function() {
     });  
 };
 
-var genParkInfo = function() {
-    //create park data div
+var genParkInfo = function(data) {
+
+    //select #park-info data div
+    
 
     //create li to append to park data div
 
@@ -51,7 +54,7 @@ var genParkInfo = function() {
     //images div
 };
 
-var genParkImages = function() {
+var genParkImages = function(data) {
     //create images div
 
     //create img and append to images div
@@ -60,7 +63,7 @@ var genParkImages = function() {
     //images div
 }
 
-var genForecast = function() {
+var genForecast = function(data) {
     //create forecast section if not hardcoded
 
     //loop through forecast data and create forecast cards
@@ -78,26 +81,28 @@ var genForecast = function() {
 
 
     
-var Testing = function() {
+// var Testing = function() {
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+//     var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
     
-    fetch(apiUrl).then(function(response) {
-        //request was successful
-        if (response.ok) {
-            response.json().then(function(data) {
+//     fetch(apiUrl).then(function(response) {
+//         //request was successful
+//         if (response.ok) {
+//             response.json().then(function(data) {
 
 
-                console.log(data);
-                //get parkName from api call that uses parkCode
-                console.log(data.data[0].fullName);
-                var parkName = data.data[0].fullName;
+//                 console.log(data);
+//                 //get parkName from api call that uses parkCode
+//                 console.log(data.data[0].fullName);
+//                 var parkName = data.data[0].fullName;
 
-                //pass response data to dom function
-                document.querySelector("header > h1").innerText = parkName;
-            });
-        };
-    });
-};
+//                 //pass response data to dom function
+//                 document.querySelector("header > h1").innerText = parkName;
+//             });
+//         };
+//     });
+// };
 
-Testing();
+// Testing();
+
+getParkName();
