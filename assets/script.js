@@ -1,6 +1,8 @@
 var searchFormEl = document.getElementById("user-form");
 var cardContainer = document.querySelector("#card-container");
+
 var cardGridEl = document.querySelector("#cardGrid");
+cardGridEl.classList.add("grid-x", "grid-padding-x", "large-up-3", "medium-up-2");
 
 //get the modal form to accept a state and populate the container 2 info
 var getParkInfo = function (event) {
@@ -48,16 +50,17 @@ var getParkInfo = function (event) {
     //else
 
 var generateCards = function(data) {
+    console.log(data.data.length);
     for (let i = 0; i < data.data.length; i++) {
         var parkName = data.data[i].fullName;
         var imgURL = data.data[i].images[i].url;
 
-        var columnEl = document.createElement("div");
-        columnEl.className = "column";
+        var cellEl = document.createElement("div");
+        cellEl.classList.add("cell")
 
         var cardEl = document.createElement("div");
         cardEl.className = "card";
-        cardEl.setAttribute("style", "width: 300px");
+        cardEl.setAttribute("style", "width: 300px; max-height: 300px");
 
         var cardDividerEl = document.createElement("div");
         cardDividerEl.className = "card-divider";
@@ -69,8 +72,8 @@ var generateCards = function(data) {
         cardEl.appendChild(cardDividerEl);
         cardEl.appendChild(cardImgEl);
 
-        columnEl.appendChild(cardEl);
-        cardGridEl.appendChild(columnEl);
+        cellEl.appendChild(cardEl);
+        cardGridEl.appendChild(cellEl);
     }
 
     //Preston volunteered to do this first, feel free to rename function
