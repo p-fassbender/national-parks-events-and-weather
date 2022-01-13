@@ -45,7 +45,7 @@ var getParkInfo = function (event) {
 
     //else
 
-var generateCards = function() {
+var generateCards = function(data) {
 
     //Preston volunteered to do this first, feel free to rename function
 
