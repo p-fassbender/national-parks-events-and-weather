@@ -50,9 +50,14 @@ var getParkInfo = function (event) {
     //else
 
 var generateCards = function(data) {
+
+    //clear out previous cards
+    cardGridEl.innerHTML="";
+
     console.log(data.data.length);
     for (let i = 0; i < data.data.length; i++) {
         var parkName = data.data[i].fullName;
+        //the next line is causing a console error right now
         var imgURL = data.data[i].images[i].url;
 
         var cellEl = document.createElement("div");

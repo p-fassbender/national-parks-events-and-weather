@@ -3,15 +3,16 @@
 
 var getParkName = function() {
 
-    //grab park name from url query string
-    var queryString = document.location.search;
+    //grab park name from url query string. Turn next line on after testing
+    //var queryString = document.location.search;
     //or whatever Preston makes the href include when accessing the second page,
     //if he doesn't specific, I'll use the parkcode
 
-    //parse parkCode from Url
-    var parkCode = queryString.split("=")[1];
+    //parse parkCode from Url Turn next line back on after testing
+    //var parkCode = queryString.split("=")[1];
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    //var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
     fetch(apiUrl).then(function(response) {
         //request was successful
@@ -42,16 +43,57 @@ var getParkName = function() {
     });  
 };
 
-var genParkInfo = function() {
-    //create park data div
+var genParkInfo = function(data) {
 
-    //create li to append to park data div
+    //select #park-info data div
+    var parkInfoDiv = document.getElementById("park-info");
+    //create ul to append to park data div
+    var parkInfoList = document.createElement("ul");
+    //append to div
+    parkInfoDiv.appendChild(parkInfoList);
 
-    //append park data div to flex container so that its to the left of
-    //images div
+    //create array for each data point we want to include
+    var infoArray = [];
+
+    var parkDescription = data.data[0].description;
+    infoArray.push(parkDescription);
+
+    //create list item for each data point we want to capture
+    var parkAddress = data.data[0].addresses[0];
+    var parkAddressListItem = "Address: " + "\n" + parkAddress.line1 + "\n" + parkAddress.city + ", " + parkAddress.stateCode + " " + parkAddress.postalCode;
+    infoArray.push(parkAddressListItem);
+
+    var parkHours = "Park Hours: " + data.data[0].operatingHours[0].description;
+    //the json data has three "\n"s and it looks goofy
+    var parkHoursString = parkHours.split("\n");
+    var parkHoursListItem = parkHoursString[0] + " " + parkHoursString[3];
+    infoArray.push(parkHoursListItem);
+
+    var parkFees = "Park Fees: " + data.data[0].entranceFees[0].description;
+    infoArray.push(parkFees);
+
+    var parkActivitiesListLength = data.data[0].activities.length;
+    var parkActivities = "Park Activities: ";
+    for (var i = 0; i < parkActivitiesListLength; i ++) {
+        //have to use conditional otherwise end up with comma after last activity
+        if (i==parkActivitiesListLength - 1) {
+            parkActivities+= data.data[0].activities[i].name
+        }
+        else {
+            parkActivities+= data.data[0].activities[i].name + ", ";
+        };
+    }
+    infoArray.push(parkActivities);
+
+    //loop through array creating li's to append to ul
+    for (var i = 0; i < infoArray.length; i++) {
+        var parkListItemEl = document.createElement("li");
+        parkListItemEl.innerText = infoArray[i];
+        parkInfoList.appendChild(parkListItemEl);
+    }
 };
 
-var genParkImages = function() {
+var genParkImages = function(data) {
     //create images div
 
     //create img and append to images div
@@ -60,7 +102,7 @@ var genParkImages = function() {
     //images div
 }
 
-var genForecast = function() {
+var genForecast = function(data) {
     //create forecast section if not hardcoded
 
     //loop through forecast data and create forecast cards
@@ -78,26 +120,28 @@ var genForecast = function() {
 
 
     
-var Testing = function() {
+// var Testing = function() {
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+//     var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
     
-    fetch(apiUrl).then(function(response) {
-        //request was successful
-        if (response.ok) {
-            response.json().then(function(data) {
+//     fetch(apiUrl).then(function(response) {
+//         //request was successful
+//         if (response.ok) {
+//             response.json().then(function(data) {
 
 
-                console.log(data);
-                //get parkName from api call that uses parkCode
-                console.log(data.data[0].fullName);
-                var parkName = data.data[0].fullName;
+//                 console.log(data);
+//                 //get parkName from api call that uses parkCode
+//                 console.log(data.data[0].fullName);
+//                 var parkName = data.data[0].fullName;
 
-                //pass response data to dom function
-                document.querySelector("header > h1").innerText = parkName;
-            });
-        };
-    });
-};
+//                 //pass response data to dom function
+//                 document.querySelector("header > h1").innerText = parkName;
+//             });
+//         };
+//     });
+// };
 
-Testing();
+// Testing();
+
+getParkName();
