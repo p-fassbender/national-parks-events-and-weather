@@ -66,8 +66,6 @@ function generateCards(data) {
         var imgURL = data.data[i].images[0].url;
         var parkCode = data.data[i].parkCode;
 
-        console.log(parkName);
-
         // dynamically create elements that make up the cards 
         var cellEl = document.createElement("div");
         cellEl.classList.add("cell");
