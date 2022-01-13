@@ -66,13 +66,22 @@ var generateCards = function() {
 //ZACH START
 
 //when a card is clicked in container two
+$( "#div-card-container" ).click(function() {
+    alert( "Handler for .click() called." );
 
-    //create an div in the dynamic divs section with the 
+    //where is the div?
+    //what is the format of the cards? I need the name
+    var ourRetrievalValue = $( "div.demo-container" ).text();
 
+        //create an div in the dynamic divs section with the
+        var newdiv = $("<div></div>").text(ourRetrievalValue);
+        //$("").append(newdiv);
     //set dynamic div link href to that info-page
 
     //save the parkname to local storage to load in the dynamic divs section when the
+    localStorage.setItem('parkname', ourRetrievalValue);
     //page is loaded
+  });
 
 //ZACH END    
 
