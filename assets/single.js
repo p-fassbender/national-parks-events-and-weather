@@ -3,16 +3,13 @@
 
 var getParkName = function() {
 
-    //grab park name from url query string. Turn next line on after testing
-    //var queryString = document.location.search;
-    //or whatever Preston makes the href include when accessing the second page,
-    //if he doesn't specific, I'll use the parkcode
+    //grab park name from url query string.
+    var queryString = document.location.search;
 
     //parse parkCode from Url Turn next line back on after testing
-    //var parkCode = queryString.split("=")[1];
+    var parkCode = queryString.split("=")[1];
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
-    //var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
     fetch(apiUrl).then(function(response) {
         //request was successful
@@ -101,8 +98,6 @@ var genParkImages = function(data) {
     //use for loop to create img tag with src the url of each image from the data
     //and append to the div
     for (var i = 0; i < data.data[0].images.length; i++) {
-
-        console.log(i);
         
         //create cell mirroring container two card grid
         var imageCell=document.createElement("div");
