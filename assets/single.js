@@ -32,7 +32,7 @@ var getParkName = function() {
                 genParkImages(data);
         
                 //generate forecast
-                genForecast(data);
+                getParkWeather(data.data[0].latitude, data.data[0].longitude);
             });
         }
         //takes you to the homepage if you don't have a parkcode to parse as the
@@ -128,7 +128,38 @@ var genParkImages = function(data) {
     };
 };
 
-var genForecast = function(data) {
+const PRESTON_WEATHER_APIKEY = "b53e99656ff24a5b5005671f604cde31"
+function getParkWeather(lat, lon) {
+    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly&units=imperial&appid=" + PRESTON_WEATHER_APIKEY;
+
+    fetch(apiURL)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (weatherData) {
+                    displayForecast(weatherData);
+                });
+            }
+            else {
+                alert("Error: Location Not Available");
+            }
+        })
+        .catch(function (error) {
+            alert("Unable to connect");
+        });
+};
+
+var displayForecast = function(weatherData) {
+    // i from 0 to 5 will diplay current day + 4 days in the future
+    // note that daily[0] is the current day's forecast
+    for (let i = 0; i < 5; i++) {
+        var parkTemp = weatherData.daily[i].temp.day; // °F
+        var parkWind = weatherData.daily[i].wind_speed; // MPH
+        var parkHumidity = weatherData.daily[i].humidity; // %
+        var parkIconUrl = 'http://openweathermap.org/img/wn/' + weatherData.daily[i].weather[0].icon + '@2x.png' // img src
+        console.log(parkTemp, parkWind, parkHumidity, parkIconUrl) // can be removed
+    }
+    
+    
     //create forecast section if not hardcoded
 
     //loop through forecast data and create forecast cards
