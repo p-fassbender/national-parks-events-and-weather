@@ -1,18 +1,14 @@
-
-
+var forecastSection = document.getElementById("forecast");
 
 var getParkName = function() {
 
-    //grab park name from url query string. Turn next line on after testing
-    //var queryString = document.location.search;
-    //or whatever Preston makes the href include when accessing the second page,
-    //if he doesn't specific, I'll use the parkcode
+    //grab park name from url query string.
+    var queryString = document.location.search;
 
     //parse parkCode from Url Turn next line back on after testing
-    //var parkCode = queryString.split("=")[1];
+    var parkCode = queryString.split("=")[1];
 
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
-    //var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
     fetch(apiUrl).then(function(response) {
         //request was successful
@@ -101,8 +97,6 @@ var genParkImages = function(data) {
     //use for loop to create img tag with src the url of each image from the data
     //and append to the div
     for (var i = 0; i < data.data[0].images.length; i++) {
-
-        console.log(i);
         
         //create cell mirroring container two card grid
         var imageCell=document.createElement("div");
@@ -152,53 +146,41 @@ var displayForecast = function(weatherData) {
     // i from 0 to 5 will diplay current day + 4 days in the future
     // note that daily[0] is the current day's forecast
     for (let i = 0; i < 5; i++) {
-        var parkTemp = weatherData.daily[i].temp.day; // °F
-        var parkWind = weatherData.daily[i].wind_speed; // MPH
-        var parkHumidity = weatherData.daily[i].humidity; // %
-        var parkIconUrl = 'http://openweathermap.org/img/wn/' + weatherData.daily[i].weather[0].icon + '@2x.png' // img src
-        console.log(parkTemp, parkWind, parkHumidity, parkIconUrl) // can be removed
-    }
-    
-    
-    //create forecast section if not hardcoded
+        var parkTemp = "Temp: " + weatherData.daily[i].temp.day +"°F";
+        var parkWind = "Wind Speed: " + weatherData.daily[i].wind_speed + " mph"; // MPH
+        var parkHumidity = "Humidity: " + weatherData.daily[i].humidity + "%";
 
-    //loop through forecast data and create forecast cards
+        var parkIconUrl = 'http://openweathermap.org/img/wn/' + weatherData.daily[i].weather[0].icon + '@2x.png' // img src
+        var parkIconImage = document.createElement("img");
+        parkIconImage.setAttribute("src", parkIconUrl);
+
+        var forecastArray = [];
+
+        forecastArray.push(parkTemp, parkWind, parkHumidity);
+
+        //create card for each set of data
+        var forecastCard = document.createElement("div");
+        //append card to forecast section
+        forecastSection.appendChild(forecastCard);
 
         //create ul for each card
-        
-        //create li element for each data to append to ul
-
+        var forecastList = document.createElement("ul");
         //append ul to card
+        forecastCard.appendChild(forecastList);
+        //append forecast icon to beginning of ul this might cause issues that a list
+        //has an <img> tag instead of an li, but I can live with it if it works for
+        //CSS purposes
+        forecastList.appendChild(parkIconImage);            
 
-        //append card to forecast section
+
+        for (var n = 0; n<forecastArray.length; n++) {
+
+            //create li element for each data to append to ul
+            var forecastListItem = document.createElement("li");
+            forecastListItem.innerText = forecastArray[n];
+            forecastList.appendChild(forecastListItem);
+        }
+    }
 };
-
-//getParkName();
-
-
-    
-// var Testing = function() {
-
-//     var apiUrl = "https://developer.nps.gov/api/v1/parks?parkCode=abli&api_key=LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
-    
-//     fetch(apiUrl).then(function(response) {
-//         //request was successful
-//         if (response.ok) {
-//             response.json().then(function(data) {
-
-
-//                 console.log(data);
-//                 //get parkName from api call that uses parkCode
-//                 console.log(data.data[0].fullName);
-//                 var parkName = data.data[0].fullName;
-
-//                 //pass response data to dom function
-//                 document.querySelector("header > h1").innerText = parkName;
-//             });
-//         };
-//     });
-// };
-
-// Testing();
 
 getParkName();
