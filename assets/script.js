@@ -19,7 +19,7 @@ var getParkInfo = function (event) {
     console.log(stateAbbr);
 
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
-    var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=" + PRESTON_APIKEY + "&limit=10";
+    var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=" + TONY_APIKEY + "&limit=10";
 
     fetch(apiUrl)
         .then(function (response) {
@@ -53,13 +53,14 @@ var getParkInfo = function (event) {
         });
 }
 
-
-//else
-
+//generate card links using api data from getParkInfo
 function generateCards(data) {
+  
+    //clear out previous cards
     cardGridEl.innerText="";
     
     // loops through the data response from the state code api fetch and creates/displays a card for the national parks in that state
+
     for (let i = 0; i < data.data.length; i++) {
         // gets info from the data response and assigns it to variables
         var parkName = data.data[i].fullName;

@@ -94,13 +94,39 @@ var genParkInfo = function(data) {
 };
 
 var genParkImages = function(data) {
-    //create images div
+    
+    //select #park-images data div
+    var parkImageDiv = document.getElementById("park-images cardGrid");
 
-    //create img and append to images div
+    //use for loop to create img tag with src the url of each image from the data
+    //and append to the div
+    for (var i = 0; i < data.data[0].images.length; i++) {
 
-    //append images div to flex container so that it's to the right of
-    //images div
-}
+        console.log(i);
+        
+        //create cell mirroring container two card grid
+        var imageCell=document.createElement("div");
+        imageCell.className = "cell";
+        parkImageDiv.appendChild(imageCell);
+
+        //create card div
+        var imageCard = document.createElement("div");
+        imageCard.className = "card";
+        imageCell.appendChild(imageCard);
+
+        //create card divider for description
+        var cardDivider = document.createElement("div");
+        cardDivider.className = "card-divider";
+        //add text of description of image;
+        cardDivider.innerText = data.data[0].images[i].title;
+        imageCard.appendChild(cardDivider);
+
+        //create img tag for card
+        var imageImage = document.createElement("img");
+        imageImage.setAttribute("src", data.data[0].images[i].url)
+        imageCard.appendChild(imageImage);
+    };
+};
 
 var genForecast = function(data) {
     //create forecast section if not hardcoded
