@@ -1,11 +1,14 @@
 # national-parks-events-and-weather
 
-The aim of this project ...
+The aim of this project was to conceive and execute a design with your team that solves a real-world problem by integrating data received from multiple server-side API requests to create an interactive front-end project.
 
 ## Technologies Used
-* ...
+* HTML 5
+* JavaScript
+* CSS
+* Foundation by Zurb
 
-with a focus on ...
+with a focus on collaborating as a team in Github, working with server-side apis, and using an unfamiliar CSS framework.
 
 ---
 
@@ -22,6 +25,7 @@ with a focus on ...
 ---
 
 ## The following is a link to the live website.
+https://p-fassbender.github.io/national-parks-events-and-weather/
 
 ## USER STORY
 AS AN outdoor enthusiast
