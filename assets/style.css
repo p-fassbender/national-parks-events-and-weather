@@ -23,6 +23,12 @@
     background-color: honeydew;
     border: 10px solid brown;
     width: 100%;
+    justify-content: center;
+}
+
+.image-div-cell {
+    margin: 0;
+    width: 100%;
 }
 
 .grid-x > .small-5 {
@@ -42,10 +48,21 @@ h2.text-center {
 }
 
 .forecast-card {
-    margin: 20px 0;
+    margin: 15px;
     padding: 0 20px;
     background-color: rgb(22, 22, 61);
     color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.forecast-card > ul {
+    justify-content: center;
+    margin-left: 0;
+}
+
+.forecast-card > ul > * {
+    text-align: center;
 }
 
 .card-section > :last-child {
@@ -71,9 +88,15 @@ footer {
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 740px) {
     .grid-x > .small-5 {
         width: 100%;
         margin: 0px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid-x > .small-6 {
+        width: 100%;
     }
 }

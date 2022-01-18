@@ -96,9 +96,9 @@ var genParkImages = function(data) {
     //and append to the div
     for (var i = 0; i < data.data[0].images.length; i++) {
         
-        //create cell mirroring container two card grid
+        //create cell that mirrors container two card grid
         var imageCell=document.createElement("div");
-        imageCell.className = "cell small-4";
+        imageCell.className = "cell small-6 image-div-cell";
         parkImageDiv.appendChild(imageCell);
 
         //create card div
@@ -161,18 +161,14 @@ var displayForecast = function(weatherData) {
         forecastCard.className = "forecast-card cell large-auto card-section grid-x";
         //append card to forecast section
         forecastCardSection.appendChild(forecastCard);
+        forecastCard.appendChild(parkIconImage);
 
         //create ul for each card
         var forecastList = document.createElement("ul");
         forecastList.setAttribute('style',"list-style:none");
-        forecastList.className = "cell text-center"
+        forecastList.className = "cell"
         //append ul to card
-        forecastCard.appendChild(forecastList);
-        //append forecast icon to beginning of ul this might cause issues that a list
-        //has an <img> tag instead of an li, but I can live with it if it works for
-        //CSS purposes
-        forecastList.appendChild(parkIconImage);            
-
+        forecastCard.appendChild(forecastList);        ;            
 
         for (var n = 0; n<forecastArray.length; n++) {
 
