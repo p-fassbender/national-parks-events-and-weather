@@ -158,12 +158,14 @@ var displayForecast = function(weatherData) {
 
         //create card for each set of data
         var forecastCard = document.createElement("div");
-        forecastCard.className = "forecast-card cell medium-2";
+        forecastCard.className = "forecast-card cell large-auto card-section grid-x";
         //append card to forecast section
         forecastCardSection.appendChild(forecastCard);
 
         //create ul for each card
         var forecastList = document.createElement("ul");
+        forecastList.setAttribute('style',"list-style:none");
+        forecastList.className = "cell text-center"
         //append ul to card
         forecastCard.appendChild(forecastList);
         //append forecast icon to beginning of ul this might cause issues that a list
