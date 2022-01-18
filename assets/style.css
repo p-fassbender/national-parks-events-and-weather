@@ -1,8 +1,8 @@
 .header {
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     background-color: forestgreen;
     color: white;
-    width: 97%;
+    width: 100%;
 }
 
 .header > a {
@@ -15,14 +15,50 @@
     width: 100%;
 }
 
+.info-list {
+    margin-top: 20px;
+}
+
 #info-images {
     background-color: honeydew;
     border: 10px solid brown;
-    width: 97%;
+    width: 100%;
 }
 
 .grid-x > .small-5 {
     margin: 30px;
+}
+
+#forecast {
+    background-color: honeydew;
+    padding-top: 30px;
+}
+
+h2.text-center {
+    padding: 15px;
+    border-bottom: 3px solid sienna;
+    width: 70%;
+    margin: auto;
+}
+
+.forecast-card {
+    margin: 20px 0;
+    padding: 0 20px;
+    background-color: rgb(22, 22, 61);
+    color: white;
+}
+
+.card-section > :last-child {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: honeydew;
+    padding: 10px;
+    margin-bottom: 0;
+    border: 3px solid indianred;
+    width: 100%;
+    border-radius: 15px;
 }
 
 @media screen and (max-width: 913px) {

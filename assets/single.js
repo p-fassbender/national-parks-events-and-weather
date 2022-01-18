@@ -1,4 +1,4 @@
-var forecastSection = document.getElementById("forecast");
+var forecastCardSection = document.getElementById("forecast-cards");
 
 var getParkName = function() {
 
@@ -45,6 +45,7 @@ var genParkInfo = function(data) {
     var parkInfoDiv = document.getElementById("park-info");
     //create ul to append to park data div
     var parkInfoList = document.createElement("ul");
+    parkInfoList.className = "info-list";
     //append to div
     parkInfoDiv.appendChild(parkInfoList);
 
@@ -157,8 +158,9 @@ var displayForecast = function(weatherData) {
 
         //create card for each set of data
         var forecastCard = document.createElement("div");
+        forecastCard.className = "forecast-card cell medium-2";
         //append card to forecast section
-        forecastSection.appendChild(forecastCard);
+        forecastCardSection.appendChild(forecastCard);
 
         //create ul for each card
         var forecastList = document.createElement("ul");
