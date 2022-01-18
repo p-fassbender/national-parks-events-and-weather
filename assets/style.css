@@ -1,0 +1,43 @@
+.header {
+    padding-bottom: 30px;
+    background-color: forestgreen;
+    color: white;
+    width: 97%;
+}
+
+.header > a {
+    background-color: sienna;
+    color: white;
+}
+.header > h1 {
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+#info-images {
+    background-color: honeydew;
+    border: 10px solid brown;
+    width: 97%;
+}
+
+.grid-x > .small-5 {
+    margin: 30px;
+}
+
+@media screen and (max-width: 913px) {
+    .header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .header > a, .header > h1 {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .grid-x > .small-5 {
+        width: 100%;
+        margin: 0px;
+    }
+}

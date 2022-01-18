@@ -60,10 +60,7 @@ var genParkInfo = function(data) {
     infoArray.push(parkAddressListItem);
 
     var parkHours = "Park Hours: " + data.data[0].operatingHours[0].description;
-    //the json data has three "\n"s and it looks goofy
-    var parkHoursString = parkHours.split("\n");
-    var parkHoursListItem = parkHoursString[0] + " " + parkHoursString[3];
-    infoArray.push(parkHoursListItem);
+    infoArray.push(parkHours);
 
     var parkFees = "Park Fees: " + data.data[0].entranceFees[0].description;
     infoArray.push(parkFees);

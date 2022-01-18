@@ -12,33 +12,31 @@
 
 <body>
 
-    <header>
-
-        <h1 class="hero">Name</h1>
-
-        <button class="goBackBtn">
+    <header class="header position-relative">
             
-            <a href="file:///C:/Users/gener/Desktop/School/group-projects/parks-and-event-proj-1/national-parks-events-and-weather/index.html">Go Back</a>
-        
-        </button>
+        <a class="button position-absolute" href="file:///C:/Users/gener/Desktop/School/group-projects/parks-and-event-proj-1/national-parks-events-and-weather/index.html">Go Back</a>        
+
+        <h1 class="success text-center">Name</h1>
 
     </header>
 
-    <!-- container for park info and images sections -->
+    <!-- container for park info and images sections-->
 
-    <container>
+    <section class="grid-x" id="info-images">
 
         <!-- div for park info -->
-        <div id="park-info">
+        <div id="park-info" class="cell small-5">
+
+            <h2 class="text-center">Park Info</h2>
 
         </div>
 
         <!-- div for park images -->
-        <div id="park-images cardGrid" class="grid-x grid-padding-x">
+        <div id="park-images cardGrid" class="cell small-5">
 
         </div>
 
-    </container>
+    </section>
 
     <!-- section for weather forecast -->
     <section id="forecast">
