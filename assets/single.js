@@ -90,7 +90,7 @@ var genParkInfo = function(data) {
 var genParkImages = function(data) {
     
     //select #park-images data div
-    var parkImageDiv = document.getElementById("park-images cardGrid");
+    var parkImageDiv = document.getElementById("park-images");
 
     //use for loop to create img tag with src the url of each image from the data
     //and append to the div
@@ -98,7 +98,7 @@ var genParkImages = function(data) {
         
         //create cell mirroring container two card grid
         var imageCell=document.createElement("div");
-        imageCell.className = "cell";
+        imageCell.className = "cell small-4";
         parkImageDiv.appendChild(imageCell);
 
         //create card div
