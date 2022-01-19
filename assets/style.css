@@ -20,11 +20,14 @@ body {
     background-color: forestgreen;
     color: white;
     width: 100%;
+    pointer-events: none;
 }
 
 .header > a {
     background-color: sienna;
     color: white;
+    pointer-events: all;
+    z-index: 999;
 }
 .header > h1 {
     top: 0;
