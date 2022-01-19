@@ -2,6 +2,8 @@ var searchFormEl = document.getElementById("user-form");
 var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
+var invalidTextEl = document.querySelector("#invalid-input");
+
 var cardGridEl = document.querySelector("#cardGrid");
 cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced");
 
@@ -15,10 +17,10 @@ var getParkInfo = function (event) {
     event.preventDefault();
 
     linkDivEl.innerText="";
+    invalidTextEl.innerText="";
+    
     var stateInputEl = document.querySelector("#state");
     var stateAbbr = (stateInputEl.value.trim()).toUpperCase();
-
-    console.log(stateAbbr);
 
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
     var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=" + TONY_APIKEY + "&limit=10";
