@@ -30,13 +30,13 @@ var getParkInfo = function (event) {
                     generateCards(data);
 
                     if (data.total > 10) {
-                        //create a link with the following href, and append to  I don't believe there is an L at the end of htm
 
-                        //var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
                         var theHref = document.createElement("a");
                         var linkDivEl = document.createElement("div");
                         linkDivEl.className = "text-center";
-                        theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm')
+                        linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
+                        theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm');
+                        theHref.setAttribute("target", '_blank');
                         theHref.innerText = "Click here to see more national parks in " + stateAbbr;
                         linkDivEl.appendChild(theHref);
                         cardContainer.appendChild(linkDivEl);
@@ -70,10 +70,6 @@ function generateCards(data) {
         var imgURL = data.data[i].images[0].url;
         var parkCode = data.data[i].parkCode;
 
-        // dynamically create elements that make up the cards 
-        // var cellEl = document.createElement("div");
-        // cellEl.classList.add("cell");
-
         var anchorEl = document.createElement("a");
         anchorEl.setAttribute("href", "./single.html?parkCode=" + parkCode);
 
@@ -93,7 +89,6 @@ function generateCards(data) {
         cardEl.appendChild(cardDividerEl);
         cardEl.appendChild(cardImgEl);
         anchorEl.appendChild(cardEl);
-        // cellEl.appendChild(anchorEl);
         cardGridEl.appendChild(anchorEl);
     }
 }

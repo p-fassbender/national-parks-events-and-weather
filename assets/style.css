@@ -1,18 +1,28 @@
 main {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 180px);
 }
 
-body {
+body, .reveal {
     background-color: honeydew;
+}
+
+.reveal{
+    border: 3px solid forestgreen;
 }
 
 #stateSearchButton {
     width: 100%;
 }
 
+.button {
+    background-color: sienna;
+}
+
 .top-bar {
     background-color: forestgreen;
     color: white;
+    border-bottom: 10px solid brown;
+    margin-bottom: 20px;
 }
 
 .header {
@@ -24,11 +34,11 @@ body {
 }
 
 .header > a {
-    background-color: sienna;
     color: white;
     pointer-events: all;
     z-index: 999;
 }
+
 .header > h1 {
     top: 0;
     position: absolute;
@@ -40,7 +50,6 @@ body {
 }
 
 #info-images {
-    /* background-color: honeydew; */
     border: 10px solid brown;
     width: 100%;
     justify-content: center;
@@ -101,6 +110,7 @@ footer {
     width: 100%;
     border-radius: 15px;
     height: 50px;
+    text-align: center;
 }
 
 @media screen and (max-width: 913px) {
