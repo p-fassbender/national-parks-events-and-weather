@@ -1,0 +1,15 @@
+main {
+    min-height: calc(100vh - 70px);
+}
+
+footer {
+    height: 50px;
+}
+
+footer p {
+    padding-top: 20px;
+}
+
+#stateSearchButton {
+    width: 100%;
+}
