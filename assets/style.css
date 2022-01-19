@@ -20,10 +20,12 @@ body, .reveal {
 
 #history-button {
     background-image: url("./mockup-images/wood.jpeg");
+    /* credit in readme goes to unsplash submission by Joshua Bartell */
 }
 
 .top-bar {
-    background-color: forestgreen;
+    background-image: url("./mockup-images/canopy.jpeg");
+    /* credit in readme goes to unsplash submission by Michael Olsen */
     color: white;
     border-bottom: 10px solid brown;
     margin-bottom: 20px;
