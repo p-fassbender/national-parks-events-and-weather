@@ -6,74 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>National Parks</title>
+    <title>National Parks - Info and Weather</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
+        crossorigin="anonymous">
 
     <link rel="stylesheet" href="./assets/style.css" />
 
 </head>
 
 <body>
-    <header>
+    <header class="top-bar align-center">
         <h1>National Parks Project!</h1>
     </header>
-    <main> 
 
-
-        <div class = "grid-x">
+    <main class="grid-container">
+        <div class="grid-x">
             <!-- left column - form and history-->
-            <div class = "cell large-4">
+            <div class="cell large-4 text-center">
 
-                <button data-open="user-form">
-                    Click to open a modal and enter a state in order to search for National Parks
-                </button>
+                <!-- Click to open a modal and enter a state in order to search for National Parks -->
+                <button id="stateSearchButton" data-open="user-form" class="button">CLICK TO SEARCH BY STATE</button>
 
                 <!--modal-->
-
                 <form class="reveal" data-reveal id="user-form">
-
-                    <label for="state">
-                        Search a state by two letter abbreviation to generate a list of National Parks in that state
-                    </label>
-        
-                    <input type="text" id="state" name="state" placeholder="Enter state abbr">
-        
-                    <button data-close>
-                        Search
-                    </button>
-        
+                    <label for="state">Enter an Abbreviated State Name</label>
+                    <input type="text" id="state" name="state" placeholder="e.g. WI, CA, or FL">
+                    <button data-close class="button">Search</button>
                 </form>
-
                 <!-- search history div goes here-->
-
             </div>
 
             <!-- right column - api search results-->
-            <div id = "card-container" class = "cell large-8">
+            <div id="card-container" class="cell large-8">
                 <div id="cardGrid"></div>
-
-                <div class="large-8" id="invalid-input">
-                    
-                </div>
-
+                <div class="large-8" id="invalid-input"></div>
             </div>
         </div>
     </main>
 
-    <footer>
-
-        <p><span class="emoji">❤️</span>Made with love by the National Parks Awesome Team: Preston Fassbender, Tony Linz, & Zach Barney</p>
-
+    <footer class="top-bar align-center">
+        <p><span class="emoji">❤️</span>Made with love by the National Parks Awesome Team: Preston Fassbender, Tony
+            Linz, & Zach Barney</p>
     </footer>
 
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
+        crossorigin="anonymous"></script>
 
     <script>$(document).foundation();</script>
 

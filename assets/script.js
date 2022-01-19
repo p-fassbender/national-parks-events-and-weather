@@ -2,7 +2,7 @@ var searchFormEl = document.getElementById("user-form");
 var cardContainer = document.querySelector("#card-container");
 
 var cardGridEl = document.querySelector("#cardGrid");
-cardGridEl.classList.add("grid-x", "grid-padding-x", "large-up-3", "medium-up-2");
+cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced"); // , "medium-up-2"
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key
 const PRESTON_APIKEY = "gRg3msbXZYdm1ZHaSXELITGBKWoGyvlYw22RFgz9";
@@ -33,10 +33,13 @@ var getParkInfo = function (event) {
                         //create a link with the following href, and append to  I don't believe there is an L at the end of htm
 
                         //var theHref = "<a href='https://www.nps.gov/state/" + stateAbbr + "/index.htm'>Link to National Park Service site for your selected state</a>"
-                        var theHref = document.createElement("a")
+                        var theHref = document.createElement("a");
+                        var linkDivEl = document.createElement("div");
+                        linkDivEl.className = "text-center";
                         theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm')
-                        theHref.innerText = "Link to National Park Service site for your selected state";
-                        cardContainer.appendChild(theHref);
+                        theHref.innerText = "Click here to see more national parks in " + stateAbbr;
+                        linkDivEl.appendChild(theHref);
+                        cardContainer.appendChild(linkDivEl);
                     }
                     else if (data.total == 0) {
                         $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
@@ -68,8 +71,8 @@ function generateCards(data) {
         var parkCode = data.data[i].parkCode;
 
         // dynamically create elements that make up the cards 
-        var cellEl = document.createElement("div");
-        cellEl.classList.add("cell");
+        // var cellEl = document.createElement("div");
+        // cellEl.classList.add("cell");
 
         var anchorEl = document.createElement("a");
         anchorEl.setAttribute("href", "./single.html?parkCode=" + parkCode);
@@ -90,8 +93,8 @@ function generateCards(data) {
         cardEl.appendChild(cardDividerEl);
         cardEl.appendChild(cardImgEl);
         anchorEl.appendChild(cardEl);
-        cellEl.appendChild(anchorEl);
-        cardGridEl.appendChild(cellEl);
+        // cellEl.appendChild(anchorEl);
+        cardGridEl.appendChild(anchorEl);
     }
 }
 
