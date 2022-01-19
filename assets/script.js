@@ -26,9 +26,17 @@ var getParkInfo = function (event) {
             if (response.ok) {
                 response.json().then(function (data) {
 
-                    //this function on the following line was Preston's first issue. Feel free to rename function
-                    generateCards(data);
-
+                    //if the form entry is not a valid two letter state initial, don't accpt input and let user know
+                    console.log(data.total);
+                    if (data.total==465 || data.total==0) {
+                        $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
+                        return false;
+                    }
+                    else {
+                        //this function on the following line was Preston's first issue. Feel free to rename function
+                        generateCards(data);
+                    }
+        
                     if (data.total > 10) {
 
                         var theHref = document.createElement("a");
@@ -41,14 +49,8 @@ var getParkInfo = function (event) {
                         linkDivEl.appendChild(theHref);
                         cardContainer.appendChild(linkDivEl);
                     }
-                    else if (data.total == 0) {
-                        $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
-                    }
                 });
             }
-            //else if () {               
-            //if the form entry is not a valid two letter state initial, don't accpt input and let user know
-            //};
         })
         .catch(function (error) {
             //notice this '.catch()' getting chained onto the end of the '.then()' method
