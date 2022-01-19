@@ -1,3 +1,20 @@
+main {
+    min-height: calc(100vh - 70px);
+}
+
+body {
+    background-color: honeydew;
+}
+
+#stateSearchButton {
+    width: 100%;
+}
+
+.top-bar {
+    background-color: forestgreen;
+    color: white;
+}
+
 .header {
     padding-bottom: 15px;
     background-color: forestgreen;
@@ -20,14 +37,16 @@
 }
 
 #info-images {
-    background-color: honeydew;
+    /* background-color: honeydew; */
     border: 10px solid brown;
     width: 100%;
     justify-content: center;
 }
+
 .card {
     height: 100%;
 }
+
 .image-div-cell {
     margin: 0;
     width: 100%;
@@ -40,7 +59,6 @@
 }
 
 #forecast {
-    background-color: honeydew;
     padding-top: 30px;
 }
 
@@ -74,7 +92,6 @@ h2.text-center {
 }
 
 footer {
-    background-color: honeydew;
     padding: 10px;
     margin-bottom: 0;
     border: 3px solid indianred;
@@ -104,15 +121,4 @@ footer {
     .grid-x > .small-6 {
         width: 100%;
     }
-
-main {
-    min-height: calc(100vh - 70px);
-}
-  
-footer p {
-    padding-top: 20px;
-}
-
-#stateSearchButton {
-    width: 100%;
 }
