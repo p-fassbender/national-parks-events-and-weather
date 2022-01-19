@@ -17,6 +17,7 @@ var getParkName = function() {
 
                 //get parkName from api call that uses parkCode
                 var parkName = data.data[0].fullName;
+                document.querySelector("title").innerText = parkName;
 
                 //assign parkName to h1 element
                 document.querySelector("header > h1").innerText = parkName;
