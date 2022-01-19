@@ -80,6 +80,7 @@ footer {
     border: 3px solid indianred;
     width: 100%;
     border-radius: 15px;
+    height: 50px;
 }
 
 @media screen and (max-width: 913px) {
@@ -103,4 +104,15 @@ footer {
     .grid-x > .small-6 {
         width: 100%;
     }
+
+main {
+    min-height: calc(100vh - 70px);
+}
+  
+footer p {
+    padding-top: 20px;
+}
+
+#stateSearchButton {
+    width: 100%;
 }
