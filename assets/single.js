@@ -1,4 +1,4 @@
-var forecastSection = document.getElementById("forecast");
+var forecastCardSection = document.getElementById("forecast-cards");
 
 var getParkName = function() {
 
@@ -45,6 +45,7 @@ var genParkInfo = function(data) {
     var parkInfoDiv = document.getElementById("park-info");
     //create ul to append to park data div
     var parkInfoList = document.createElement("ul");
+    parkInfoList.className = "info-list";
     //append to div
     parkInfoDiv.appendChild(parkInfoList);
 
@@ -60,10 +61,7 @@ var genParkInfo = function(data) {
     infoArray.push(parkAddressListItem);
 
     var parkHours = "Park Hours: " + data.data[0].operatingHours[0].description;
-    //the json data has three "\n"s and it looks goofy
-    var parkHoursString = parkHours.split("\n");
-    var parkHoursListItem = parkHoursString[0] + " " + parkHoursString[3];
-    infoArray.push(parkHoursListItem);
+    infoArray.push(parkHours);
 
     var parkFees = "Park Fees: " + data.data[0].entranceFees[0].description;
     infoArray.push(parkFees);
@@ -92,15 +90,15 @@ var genParkInfo = function(data) {
 var genParkImages = function(data) {
     
     //select #park-images data div
-    var parkImageDiv = document.getElementById("park-images cardGrid");
+    var parkImageDiv = document.getElementById("park-images");
 
     //use for loop to create img tag with src the url of each image from the data
     //and append to the div
     for (var i = 0; i < data.data[0].images.length; i++) {
         
-        //create cell mirroring container two card grid
+        //create cell that mirrors container two card grid
         var imageCell=document.createElement("div");
-        imageCell.className = "cell";
+        imageCell.className = "cell small-6 image-div-cell";
         parkImageDiv.appendChild(imageCell);
 
         //create card div
@@ -160,18 +158,17 @@ var displayForecast = function(weatherData) {
 
         //create card for each set of data
         var forecastCard = document.createElement("div");
+        forecastCard.className = "forecast-card cell large-auto card-section grid-x";
         //append card to forecast section
-        forecastSection.appendChild(forecastCard);
+        forecastCardSection.appendChild(forecastCard);
+        forecastCard.appendChild(parkIconImage);
 
         //create ul for each card
         var forecastList = document.createElement("ul");
+        forecastList.setAttribute('style',"list-style:none");
+        forecastList.className = "cell"
         //append ul to card
-        forecastCard.appendChild(forecastList);
-        //append forecast icon to beginning of ul this might cause issues that a list
-        //has an <img> tag instead of an li, but I can live with it if it works for
-        //CSS purposes
-        forecastList.appendChild(parkIconImage);            
-
+        forecastCard.appendChild(forecastList);        ;            
 
         for (var n = 0; n<forecastArray.length; n++) {
 
