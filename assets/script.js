@@ -18,6 +18,8 @@ var getParkInfo = function (event) {
 
     linkDivEl.innerText="";
     invalidTextEl.innerText="";
+    //clear out previous cards
+    cardGridEl.innerText="";
     
     var stateInputEl = document.querySelector("#state");
     var stateAbbr = (stateInputEl.value.trim()).toUpperCase();
@@ -61,9 +63,6 @@ var getParkInfo = function (event) {
 
 //generate card links using api data from getParkInfo
 function generateCards(data) {
-  
-    //clear out previous cards
-    cardGridEl.innerText="";
     
     // loops through the data response from the state code api fetch and creates/displays a card for the national parks in that state
 
