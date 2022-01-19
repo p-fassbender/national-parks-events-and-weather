@@ -27,6 +27,11 @@ body, .reveal {
     /* credit in readme goes to unsplash submission by Simon Berger */
 }
 
+.reveal > button:hover {
+    color: forestgreen;
+    transition-timing-function: .25s;
+}
+
 #history-button {
     background-image: url("./mockup-images/wood.jpeg");
     /* credit in readme goes to unsplash submission by Joshua Bartell */
