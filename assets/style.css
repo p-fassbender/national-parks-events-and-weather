@@ -1,3 +1,13 @@
+/* TABLE OF CONTENTS */
+/*
+BODY
+HEADER
+UTILITIES
+FOOTER
+MEDIA QUERIES
+*/
+
+/* BODY */
 main {
     min-height: calc(100vh - 180px);
 }
@@ -6,18 +16,7 @@ body, .reveal {
     background-color: honeydew;
 }
 
-.reveal{
-    border: 3px solid forestgreen;
-}
-
-#stateSearchButton {
-    width: 100%;
-}
-
-.button {
-    background-color: sienna;
-}
-
+/* HEADER */
 .top-bar {
     background-color: forestgreen;
     color: white;
@@ -43,6 +42,19 @@ body, .reveal {
     top: 0;
     position: absolute;
     width: 100%;
+}
+
+/* UTILITIES */
+.reveal{
+    border: 3px solid forestgreen;
+}
+
+#stateSearchButton {
+    width: 100%;
+}
+
+.button {
+    background-color: sienna;
 }
 
 .info-list {
@@ -109,6 +121,7 @@ h2.text-center {
     margin-bottom: 20px;
 }
 
+/* FOOTER */
 footer {
     padding: 10px;
     margin-bottom: 0;
@@ -119,6 +132,7 @@ footer {
     text-align: center;
 }
 
+/* MEDIA QUERIES */
 @media screen and (max-width: 1023px) {
     #forecast-cards > .cell {
         min-width: 0;
