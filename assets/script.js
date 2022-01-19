@@ -3,13 +3,10 @@ var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
-<<<<<<< HEAD
 var cardGridEl = document.getElementById("cardGrid");
 
 //var parkList = [];
 
-=======
->>>>>>> 627634dc6c70d89d23bc4964a8e1a1c1a51dacbf
 var cardGridEl = document.querySelector("#cardGrid");
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key

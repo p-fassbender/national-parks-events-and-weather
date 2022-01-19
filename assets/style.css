@@ -16,7 +16,6 @@ body, .reveal {
     background-color: honeydew;
 }
 
-<<<<<<< HEAD
 .reveal{
     border: 3px solid forestgreen;
 }
@@ -53,9 +52,6 @@ body, .reveal {
     transition-timing-function: .25s;
 }
 
-=======
-/* HEADER */
->>>>>>> 627634dc6c70d89d23bc4964a8e1a1c1a51dacbf
 .top-bar {
     /* credit in readme goes to unsplash submission by Michael Olsen */
     color: white;
