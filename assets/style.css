@@ -18,6 +18,10 @@ body, .reveal {
     background-color: sienna;
 }
 
+#history-button {
+    background-image: url("./mockup-images/wood.jpeg");
+}
+
 .top-bar {
     background-color: forestgreen;
     color: white;

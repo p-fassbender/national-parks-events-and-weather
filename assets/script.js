@@ -100,29 +100,29 @@ function generateCards(data) {
 
 var loadParks = function () {
 
-    //already proven cityList is indeed an array object
+    //load the list of parks and codes
     var loadedList = JSON.parse(localStorage.getItem("parks"));
+    var loadedCodeList = JSON.parse(localStorage.getItem("codes"));
 
     if (!loadedList) {
         return;
     }
     else {
-        for (var i =0; i<loadedList.length; i++) {
-            //recreate parkList array from localstorage
-            //parkList.push(loadedList[i]);
-    
-            populateButtons(loadedList[i]);
+        for (var i =0; i<loadedList.length; i++) {        
+            populateButtons(loadedList[i], loadedCodeList[i]);
         }
     }  
 }
 
-var populateButtons = function(parkName) {
+var populateButtons = function(parkName, parkCode) {
 
-    var newButton = document.createElement("button");
+    var newButton = document.createElement("a");
 
     //add button text and styles
     newButton.className = "medium-6 button cell width-100";
+    newButton.id = "history-button"
     newButton.setAttribute("style", "display: block");
+    newButton.setAttribute("href", "./single.html?parkCode=" + parkCode);
     newButton.innerText=parkName;
 
     //append button to make visible and use

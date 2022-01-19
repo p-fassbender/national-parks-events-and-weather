@@ -1,6 +1,7 @@
 var forecastCardSection = document.getElementById("forecast-cards");
 
 var parkList = [];
+var parkCodesList = [];
 
 var getParkName = function() {
 
@@ -25,7 +26,7 @@ var getParkName = function() {
                 document.querySelector("header > h1").innerText = parkName;
 
                 //add parkName to localStorage to load on index.html next time
-                updateParkList(parkName);
+                updateParkList(parkName,parkCode);
 
                 //generate park info function
                 genParkInfo(data);
@@ -47,8 +48,9 @@ var getParkName = function() {
 
 var loadParkList = function () {
 
-    //already proven cityList is indeed an array object
+    //load parks and their codes to create history button with links
     var loadedList = JSON.parse(localStorage.getItem("parks"));
+    var loadedCodeList = JSON.parse(localStorage.getItem("codes"));
 
     if (!loadedList) {
         return;
@@ -57,15 +59,17 @@ var loadParkList = function () {
         for (var i =0; i<loadedList.length; i++) {
             //recreate cityList array from localstorage
             parkList.push(loadedList[i]);
+            parkCodesList.push(loadedCodeList[i]);
         }
     }
 }
 
 var saveParkList = function () {
     localStorage.setItem("parks", JSON.stringify(parkList));
+    localStorage.setItem("codes", JSON.stringify(parkCodesList));
 }
 
-var updateParkList = function(parkName) {
+var updateParkList = function(parkName, parkCode) {
     
     if (parkList.includes(parkName)) {
         return;
@@ -73,6 +77,7 @@ var updateParkList = function(parkName) {
     else {
         //add park input to array
         parkList.push(parkName);
+        parkCodesList.push(parkCode);
         saveParkList();
     }
 };
