@@ -3,6 +3,9 @@ var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
+var cardGridEl = document.getElementById("cardGrid");
+
+//var parkList = [];
 
 var cardGridEl = document.querySelector("#cardGrid");
 cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced");
@@ -95,6 +98,36 @@ function generateCards(data) {
     }
 }
 
+var loadParks = function () {
+
+    //already proven cityList is indeed an array object
+    var loadedList = JSON.parse(localStorage.getItem("parks"));
+
+    if (!loadedList) {
+        return;
+    }
+    else {
+        for (var i =0; i<loadedList.length; i++) {
+            //recreate parkList array from localstorage
+            //parkList.push(loadedList[i]);
+    
+            populateButtons(loadedList[i]);
+        }
+    }  
+}
+
+var populateButtons = function(parkName) {
+
+    var newButton = document.createElement("button");
+
+    //add button text and styles
+    newButton.className = "medium-6 button cell width-100";
+    newButton.setAttribute("style", "display: block");
+    newButton.innerText=parkName;
+
+    //append button to make visible and use
+    document.getElementById("left-column").appendChild(newButton);
+}
 
 //ZACH START
 
@@ -120,8 +153,5 @@ function generateCards(data) {
 //add event listener for form submission
 searchFormEl.addEventListener("submit", getParkInfo);
 
-//add event listener for when a card is clicked in container two
-
-
-
 //call loadParks() function
+loadParks();

@@ -1,5 +1,7 @@
 var forecastCardSection = document.getElementById("forecast-cards");
 
+var parkList = [];
+
 var getParkName = function() {
 
     //grab park name from url query string.
@@ -22,6 +24,9 @@ var getParkName = function() {
                 //assign parkName to h1 element
                 document.querySelector("header > h1").innerText = parkName;
 
+                //add parkName to localStorage to load on index.html next time
+                updateParkList(parkName);
+
                 //generate park info function
                 genParkInfo(data);
         
@@ -38,6 +43,38 @@ var getParkName = function() {
             document.location.replace("./index.html");
         }
     });  
+};
+
+var loadParkList = function () {
+
+    //already proven cityList is indeed an array object
+    var loadedList = JSON.parse(localStorage.getItem("parks"));
+
+    if (!loadedList) {
+        return;
+    }
+    else {
+        for (var i =0; i<loadedList.length; i++) {
+            //recreate cityList array from localstorage
+            parkList.push(loadedList[i]);
+        }
+    }
+}
+
+var saveParkList = function () {
+    localStorage.setItem("parks", JSON.stringify(parkList));
+}
+
+var updateParkList = function(parkName) {
+    
+    if (parkList.includes(parkName)) {
+        return;
+    }
+    else {
+        //add park input to array
+        parkList.push(parkName);
+        saveParkList();
+    }
 };
 
 var genParkInfo = function(data) {
@@ -180,5 +217,7 @@ var displayForecast = function(weatherData) {
         }
     }
 };
+
+loadParkList();
 
 getParkName();
