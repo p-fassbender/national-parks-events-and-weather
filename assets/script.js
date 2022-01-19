@@ -1,8 +1,11 @@
 var searchFormEl = document.getElementById("user-form");
 var cardContainer = document.querySelector("#card-container");
+var linkDivEl = document.querySelector("#linkDiv");
+linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
+var invalidTextEl = document.querySelector("#invalid-input");
 
 var cardGridEl = document.querySelector("#cardGrid");
-cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced"); // , "medium-up-2"
+cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced");
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key
 const PRESTON_APIKEY = "gRg3msbXZYdm1ZHaSXELITGBKWoGyvlYw22RFgz9";
@@ -13,10 +16,11 @@ var getParkInfo = function (event) {
 
     event.preventDefault();
 
+    linkDivEl.innerText="";
+    invalidTextEl.innerText="";
+    
     var stateInputEl = document.querySelector("#state");
     var stateAbbr = (stateInputEl.value.trim()).toUpperCase();
-
-    console.log(stateAbbr);
 
     //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
     var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=" + TONY_APIKEY + "&limit=10";
@@ -40,9 +44,6 @@ var getParkInfo = function (event) {
                     if (data.total > 10) {
 
                         var theHref = document.createElement("a");
-                        var linkDivEl = document.createElement("div");
-                        linkDivEl.className = "text-center";
-                        linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
                         theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm');
                         theHref.setAttribute("target", '_blank');
                         theHref.innerText = "Click here to see more national parks in " + stateAbbr;
