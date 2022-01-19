@@ -12,10 +12,19 @@ body, .reveal {
 
 #stateSearchButton {
     width: 100%;
+    font-weight: bolder;
+    color: black;
+    font-size: larger;
+}
+
+#stateSearchButton:hover {
+    color: forestgreen;
+    transition-timing-function: .25s;
 }
 
 .button {
-    background-color: sienna;
+    background-image: url("./mockup-images/logs.jpeg");
+    /* credit in readme goes to unsplash submission by Simon Berger */
 }
 
 #history-button {
@@ -23,24 +32,29 @@ body, .reveal {
     /* credit in readme goes to unsplash submission by Joshua Bartell */
 }
 
+#history-button:hover {
+    color: forestgreen;
+    transition-timing-function: .25s;
+}
+
 .top-bar {
-    background-image: url("./mockup-images/canopy.jpeg");
     /* credit in readme goes to unsplash submission by Michael Olsen */
     color: white;
-    border-bottom: 10px solid brown;
+    border-bottom: 10px solid black;
     margin-bottom: 20px;
+    background-image: url("./mockup-images/canopy.jpeg");
 }
 
 .header {
     padding-bottom: 15px;
-    background-color: forestgreen;
+    background-image: url("./mockup-images/canopy.jpeg");
     color: white;
     width: 100%;
     pointer-events: none;
 }
 
 .header > a {
-    color: white;
+    color: black;
     pointer-events: all;
     z-index: 999;
 }
@@ -56,7 +70,7 @@ body, .reveal {
 }
 
 #info-images {
-    border: 10px solid brown;
+    border: 10px solid sienna;
     width: 100%;
     justify-content: center;
 }
@@ -118,7 +132,6 @@ h2.text-center {
 footer {
     padding: 10px;
     margin-bottom: 0;
-    border: 3px solid indianred;
     width: 100%;
     border-radius: 15px;
     height: fit-content;
