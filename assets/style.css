@@ -1,3 +1,30 @@
+main {
+    min-height: calc(100vh - 180px);
+}
+
+body, .reveal {
+    background-color: honeydew;
+}
+
+.reveal{
+    border: 3px solid forestgreen;
+}
+
+#stateSearchButton {
+    width: 100%;
+}
+
+.button {
+    background-color: sienna;
+}
+
+.top-bar {
+    background-color: forestgreen;
+    color: white;
+    border-bottom: 10px solid brown;
+    margin-bottom: 20px;
+}
+
 .header {
     padding-bottom: 15px;
     background-color: forestgreen;
@@ -7,11 +34,11 @@
 }
 
 .header > a {
-    background-color: sienna;
     color: white;
     pointer-events: all;
     z-index: 999;
 }
+
 .header > h1 {
     top: 0;
     position: absolute;
@@ -23,14 +50,15 @@
 }
 
 #info-images {
-    background-color: honeydew;
     border: 10px solid brown;
     width: 100%;
     justify-content: center;
 }
+
 .card {
     height: 100%;
 }
+
 .image-div-cell {
     margin: 0;
     width: 100%;
@@ -43,7 +71,6 @@
 }
 
 #forecast {
-    background-color: honeydew;
     padding-top: 30px;
 }
 
@@ -77,13 +104,13 @@ h2.text-center {
 }
 
 footer {
-    background-color: honeydew;
     padding: 10px;
     margin-bottom: 0;
     border: 3px solid indianred;
     width: 100%;
     border-radius: 15px;
     height: 50px;
+    text-align: center;
 }
 
 @media screen and (max-width: 913px) {
@@ -105,18 +132,6 @@ footer {
 
 @media screen and (max-width: 500px) {
     .grid-x > .small-6 {
-        width: 100%;
-    }
-
-    main {
-        min-height: calc(100vh - 70px);
-    }
-  
-    footer p {
-        padding-top: 20px;
-    }
-
-    #stateSearchButton {
         width: 100%;
     }
 }
