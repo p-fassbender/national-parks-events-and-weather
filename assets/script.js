@@ -3,9 +3,7 @@ var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
-
 var cardGridEl = document.querySelector("#cardGrid");
-cardGridEl.classList.add("grid-x", "grid-padding-x", "align-spaced");
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key
 const PRESTON_APIKEY = "gRg3msbXZYdm1ZHaSXELITGBKWoGyvlYw22RFgz9";
@@ -13,38 +11,35 @@ const TONY_APIKEY = "LlVYiDWyyOiv7SJeWDVIbQAJ2mMuYi64fapw7tEA";
 
 //get the modal form to accept a state and populate the container 2 info
 var getParkInfo = function (event) {
-
     event.preventDefault();
 
+    //clear out previous elements
     linkDivEl.innerText="";
     invalidTextEl.innerText="";
-    //clear out previous cards
     cardGridEl.innerText="";
     
+    // gets text input from the modal and assigns it to a variable
     var stateInputEl = document.querySelector("#state");
     var stateAbbr = (stateInputEl.value.trim()).toUpperCase();
 
-    //need to add query parameter and hopefully be able to use state without having to convert state to anything queryable
+    //fetch the first 10 national park datas from the national park service api
     var apiUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateAbbr + "&api_key=" + TONY_APIKEY + "&limit=10";
-
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
 
-                    //if the form entry is not a valid two letter state initial, don't accpt input and let user know
-                    console.log(data.total);
+                    //if the form entry is not a valid two letter state initial, don't accept input and let user know
                     if (data.total==465 || data.total==0) {
                         $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
                         return false;
                     }
                     else {
-                        //this function on the following line was Preston's first issue. Feel free to rename function
+                        // pass fetched data into generateCards function
                         generateCards(data);
                     }
-        
+                    // if a state has more than 10 mational parks then provide a link to the national parks website for that state
                     if (data.total > 10) {
-
                         var theHref = document.createElement("a");
                         theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm');
                         theHref.setAttribute("target", '_blank');
@@ -56,16 +51,13 @@ var getParkInfo = function (event) {
             }
         })
         .catch(function (error) {
-            //notice this '.catch()' getting chained onto the end of the '.then()' method
             console.log(error);
         });
 }
 
 //generate card links using api data from getParkInfo
 function generateCards(data) {
-    
     // loops through the data response from the state code api fetch and creates/displays a card for the national parks in that state
-
     for (let i = 0; i < data.data.length; i++) {
         // gets info from the data response and assigns it to variables
         var parkName = data.data[i].fullName;
