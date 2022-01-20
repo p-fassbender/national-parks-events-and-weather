@@ -79,9 +79,15 @@ function generateCards(data) {
         cardImgEl.src = imgURL;
         cardImgEl.setAttribute("alt", "A beautiful image of the state park");
 
+        var cardSectionEl = document.createElement("div");
+        cardSectionEl.className = "card-section";
+        cardSectionEl.textContent = "Click for more info!";
+
+
         // append the pieces of the card together and then append them to the page
         cardEl.appendChild(cardDividerEl);
         cardEl.appendChild(cardImgEl);
+        cardEl.appendChild(cardSectionEl);
         anchorEl.appendChild(cardEl);
         cardGridEl.appendChild(anchorEl);
     }
