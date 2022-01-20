@@ -3,6 +3,10 @@ var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
+var cardGridEl = document.getElementById("cardGrid");
+
+//var parkList = [];
+
 var cardGridEl = document.querySelector("#cardGrid");
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key
@@ -87,6 +91,36 @@ function generateCards(data) {
     }
 }
 
+var loadParks = function () {
+
+    //load the list of parks and codes
+    var loadedList = JSON.parse(localStorage.getItem("parks"));
+    var loadedCodeList = JSON.parse(localStorage.getItem("codes"));
+
+    if (!loadedList) {
+        return;
+    }
+    else {
+        for (var i =0; i<loadedList.length; i++) {        
+            populateButtons(loadedList[i], loadedCodeList[i]);
+        }
+    }  
+}
+
+var populateButtons = function(parkName, parkCode) {
+
+    var newButton = document.createElement("a");
+
+    //add button text and styles
+    newButton.className = "medium-6 button cell width-100";
+    newButton.id = "history-button"
+    newButton.setAttribute("style", "display: block");
+    newButton.setAttribute("href", "./single.html?parkCode=" + parkCode);
+    newButton.innerText=parkName;
+
+    //append button to make visible and use
+    document.getElementById("left-column").appendChild(newButton);
+}
 
 //ZACH START
 
@@ -112,8 +146,5 @@ function generateCards(data) {
 //add event listener for form submission
 searchFormEl.addEventListener("submit", getParkInfo);
 
-//add event listener for when a card is clicked in container two
-
-
-
 //call loadParks() function
+loadParks();
