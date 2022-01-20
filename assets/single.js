@@ -187,6 +187,13 @@ var displayForecast = function(weatherData) {
     // i from 0 to 5 will diplay current day + 4 days in the future
     // note that daily[0] is the current day's forecast
     for (let i = 0; i < 5; i++) {
+        //the json for the weather api gives the date in unix time
+        var parkUnix = weatherData.daily[i+1].dt;
+        //convert unix to date format
+        var date = new Date(parkUnix*1000);
+        //convert date format to mm/dd/yyyy
+        var parkDate = date.toLocaleDateString("en-us");
+
         var parkTemp = "Temp: " + weatherData.daily[i].temp.day +"°F";
         var parkWind = "Wind Speed: " + weatherData.daily[i].wind_speed + " mph"; // MPH
         var parkHumidity = "Humidity: " + weatherData.daily[i].humidity + "%";
@@ -197,7 +204,7 @@ var displayForecast = function(weatherData) {
 
         var forecastArray = [];
 
-        forecastArray.push(parkTemp, parkWind, parkHumidity);
+        forecastArray.push(parkDate, parkTemp, parkWind, parkHumidity);
 
         //create card for each set of data
         var forecastCard = document.createElement("div");
