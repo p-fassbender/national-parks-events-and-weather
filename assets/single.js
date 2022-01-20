@@ -1,5 +1,8 @@
 var forecastCardSection = document.getElementById("forecast-cards");
 
+var parkList = [];
+var parkCodesList = [];
+
 var getParkName = function() {
 
     //grab park name from url query string.
@@ -22,6 +25,9 @@ var getParkName = function() {
                 //assign parkName to h1 element
                 document.querySelector("header > h1").innerText = parkName;
 
+                //add parkName to localStorage to load on index.html next time
+                updateParkList(parkName,parkCode);
+
                 //generate park info function
                 genParkInfo(data);
         
@@ -38,6 +44,42 @@ var getParkName = function() {
             document.location.replace("./index.html");
         }
     });  
+};
+
+var loadParkList = function () {
+
+    //load parks and their codes to create history button with links
+    var loadedList = JSON.parse(localStorage.getItem("parks"));
+    var loadedCodeList = JSON.parse(localStorage.getItem("codes"));
+
+    if (!loadedList) {
+        return;
+    }
+    else {
+        for (var i =0; i<loadedList.length; i++) {
+            //recreate cityList array from localstorage
+            parkList.push(loadedList[i]);
+            parkCodesList.push(loadedCodeList[i]);
+        }
+    }
+}
+
+var saveParkList = function () {
+    localStorage.setItem("parks", JSON.stringify(parkList));
+    localStorage.setItem("codes", JSON.stringify(parkCodesList));
+}
+
+var updateParkList = function(parkName, parkCode) {
+    
+    if (parkList.includes(parkName)) {
+        return;
+    }
+    else {
+        //add park input to array
+        parkList.push(parkName);
+        parkCodesList.push(parkCode);
+        saveParkList();
+    }
 };
 
 var genParkInfo = function(data) {
@@ -145,6 +187,13 @@ var displayForecast = function(weatherData) {
     // i from 0 to 5 will diplay current day + 4 days in the future
     // note that daily[0] is the current day's forecast
     for (let i = 0; i < 5; i++) {
+        //the json for the weather api gives the date in unix time
+        var parkUnix = weatherData.daily[i+1].dt;
+        //convert unix to date format
+        var date = new Date(parkUnix*1000);
+        //convert date format to mm/dd/yyyy
+        var parkDate = date.toLocaleDateString("en-us");
+
         var parkTemp = "Temp: " + weatherData.daily[i].temp.day +"°F";
         var parkWind = "Wind Speed: " + weatherData.daily[i].wind_speed + " mph"; // MPH
         var parkHumidity = "Humidity: " + weatherData.daily[i].humidity + "%";
@@ -155,7 +204,7 @@ var displayForecast = function(weatherData) {
 
         var forecastArray = [];
 
-        forecastArray.push(parkTemp, parkWind, parkHumidity);
+        forecastArray.push(parkDate, parkTemp, parkWind, parkHumidity);
 
         //create card for each set of data
         var forecastCard = document.createElement("div");
@@ -180,5 +229,7 @@ var displayForecast = function(weatherData) {
         }
     }
 };
+
+loadParkList();
 
 getParkName();

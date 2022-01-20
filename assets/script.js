@@ -3,6 +3,11 @@ var cardContainer = document.querySelector("#card-container");
 var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
+var cardGridEl = document.getElementById("cardGrid");
+var clearButtonEl = document.getElementById("clear-button");
+
+//var parkList = [];
+
 var cardGridEl = document.querySelector("#cardGrid");
 
 // FOR TESTING PURPOSES just swap out the variable in the fetch for your respective key
@@ -93,33 +98,50 @@ function generateCards(data) {
     }
 }
 
+var loadParks = function () {
 
-//ZACH START
+    //load the list of parks and codes
+    var loadedList = JSON.parse(localStorage.getItem("parks"));
+    var loadedCodeList = JSON.parse(localStorage.getItem("codes"));
 
-//when a card is clicked in container two
+    if (!loadedList) {
+        return;
+    }
+    else {
+        for (var i =0; i<loadedList.length; i++) {        
+            populateButtons(loadedList[i], loadedCodeList[i]);
+        }
+    }  
+}
 
-//create an div in the dynamic divs section with the 
+var populateButtons = function(parkName, parkCode) {
 
-//set dynamic div link href to that info-page
+    var newButton = document.createElement("a");
 
-//save the parkname to local storage to load in the dynamic divs section when the
-//page is loaded
+    //add button text and styles
+    newButton.className = "medium-6 button cell width-100";
+    newButton.id = "history-button"
+    newButton.setAttribute("style", "display: block");
+    newButton.setAttribute("href", "./single.html?parkCode=" + parkCode);
+    newButton.innerText=parkName;
 
-//ZACH END    
+    //append button to make visible and use
+    document.getElementById("left-column").appendChild(newButton);
+}
 
-//create a loadParks() function
+var clearHistory = function(event) {
 
-//get array of park names from local storage
-
-//loop through array to generate dynamic divs of parks that we've looked at
-
+    if (event.target == document.getElementById("clear-button")) {
+    localStorage.clear();
+    location.reload();
+    };
+}
 
 
 //add event listener for form submission
 searchFormEl.addEventListener("submit", getParkInfo);
 
-//add event listener for when a card is clicked in container two
-
-
+clearButtonEl.addEventListener("click", clearHistory);
 
 //call loadParks() function
+loadParks();
