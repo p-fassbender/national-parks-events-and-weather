@@ -27,7 +27,7 @@ body, .reveal {
     font-size: larger;
 }
 
-#stateSearchButton:hover {
+#stateSearchButton:hover, #clear-button:hover {
     color: forestgreen;
     transition-timing-function: .25s;
 }
