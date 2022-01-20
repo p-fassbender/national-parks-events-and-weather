@@ -5,8 +5,7 @@ linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
 var cardGridEl = document.getElementById("cardGrid");
 var clearButtonEl = document.getElementById("clear-button");
-
-//var parkList = [];
+var moreInfoEl = document.querySelector("#moreInfo");
 
 var cardGridEl = document.querySelector("#cardGrid");
 
@@ -22,6 +21,7 @@ var getParkInfo = function (event) {
     linkDivEl.innerText="";
     invalidTextEl.innerText="";
     cardGridEl.innerText="";
+    moreInfoEl.innerText="";
     
     // gets text input from the modal and assigns it to a variable
     var stateInputEl = document.querySelector("#state");
@@ -41,6 +41,7 @@ var getParkInfo = function (event) {
                     }
                     else {
                         // pass fetched data into generateCards function
+                        moreInfoEl.textContent = "Select a park to see more info!";
                         generateCards(data);
                     }
                     // if a state has more than 10 mational parks then provide a link to the national parks website for that state
@@ -84,15 +85,9 @@ function generateCards(data) {
         cardImgEl.src = imgURL;
         cardImgEl.setAttribute("alt", "A beautiful image of the state park");
 
-        var cardSectionEl = document.createElement("div");
-        cardSectionEl.className = "card-section";
-        cardSectionEl.textContent = "Click for more info!";
-
-
         // append the pieces of the card together and then append them to the page
         cardEl.appendChild(cardDividerEl);
         cardEl.appendChild(cardImgEl);
-        cardEl.appendChild(cardSectionEl);
         anchorEl.appendChild(cardEl);
         cardGridEl.appendChild(anchorEl);
     }
