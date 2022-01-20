@@ -4,6 +4,7 @@ var linkDivEl = document.querySelector("#linkDiv");
 linkDivEl.setAttribute("style", "margin: 10px 0 20px 0");
 var invalidTextEl = document.querySelector("#invalid-input");
 var cardGridEl = document.getElementById("cardGrid");
+var clearButtonEl = document.getElementById("clear-button");
 
 //var parkList = [];
 
@@ -122,29 +123,19 @@ var populateButtons = function(parkName, parkCode) {
     document.getElementById("left-column").appendChild(newButton);
 }
 
-//ZACH START
+var clearHistory = function(event) {
 
-//when a card is clicked in container two
-
-//create an div in the dynamic divs section with the 
-
-//set dynamic div link href to that info-page
-
-//save the parkname to local storage to load in the dynamic divs section when the
-//page is loaded
-
-//ZACH END    
-
-//create a loadParks() function
-
-//get array of park names from local storage
-
-//loop through array to generate dynamic divs of parks that we've looked at
-
+    if (event.target == document.getElementById("clear-button")) {
+    localStorage.clear();
+    location.reload();
+    };
+}
 
 
 //add event listener for form submission
 searchFormEl.addEventListener("submit", getParkInfo);
+
+clearButtonEl.addEventListener("click", clearHistory);
 
 //call loadParks() function
 loadParks();

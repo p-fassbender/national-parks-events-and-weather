@@ -89,6 +89,10 @@ body, .reveal {
     width: 100%;
 }
 
+#clear-button {
+    color: black;
+}
+
 .button {
     background-color: sienna;
 }
