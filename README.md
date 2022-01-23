@@ -34,7 +34,7 @@ The depth of information we can get from our APIs make this project standout, as
 ---
 
 ## The following is a link to the live website.
-https://p-fassbender.github.io/national-parks-events-and-weather/
+https://p-fassbender.github.io/national-parks-info-and-weather/
 
 ## The following is a link to the GitHub Repo.
 https://github.com/p-fassbender/national-parks-info-and-weather 
