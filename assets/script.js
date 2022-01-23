@@ -35,7 +35,7 @@ var getParkInfo = function (event) {
                 response.json().then(function (data) {
 
                     //if the form entry is not a valid two letter state initial, don't accept input and let user know
-                    if (data.total==465 || data.total==0) {
+                    if (data.total>100 || data.total==0) {
                         $("#invalid-input").text("The state code you entered is invalid, or there are no National Parks in the selected state.");
                         return false;
                     }
@@ -43,15 +43,16 @@ var getParkInfo = function (event) {
                         // pass fetched data into generateCards function
                         moreInfoEl.textContent = "Select a park to see more info!";
                         generateCards(data);
-                    }
-                    // if a state has more than 10 mational parks then provide a link to the national parks website for that state
-                    if (data.total > 10) {
-                        var theHref = document.createElement("a");
-                        theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm');
-                        theHref.setAttribute("target", '_blank');
-                        theHref.innerText = "Click here to see more national parks in " + stateAbbr;
-                        linkDivEl.appendChild(theHref);
-                        cardContainer.appendChild(linkDivEl);
+
+                        // if a state has more than 10 mational parks then provide a link to the national parks website for that state
+                        if (data.total > 10) {
+                            var theHref = document.createElement("a");
+                            theHref.setAttribute("href", 'https://www.nps.gov/state/' + stateAbbr + '/index.htm');
+                            theHref.setAttribute("target", '_blank');
+                            theHref.innerText = "Click here to see more national parks in " + stateAbbr;
+                            linkDivEl.appendChild(theHref);
+                            cardContainer.appendChild(linkDivEl);
+                        }
                     }
                 });
             }
