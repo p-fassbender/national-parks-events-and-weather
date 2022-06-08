@@ -7,7 +7,7 @@
 -   [Links](#links)
 -   [User Story](#user-story)
 -   [Features](#features)
--   [Installation](#installation)
+-   [Instructions to Run App](#instructions-to-run-app)
 -   [Screenshot](#screenshot)
 
 ## Introduction
@@ -58,7 +58,7 @@ GIVEN a parks dashboard with form inputs
 -   WHEN I select a national park from the homepage, THEN it is saved into a list of recently viewed parks in local storage.
 -   WHEN I load the parks dashboard homepage, THEN I am presented with a list of saved parks.
 
-## Installation
+## Instrctions to Run App
 
 -   To clone repository
 
