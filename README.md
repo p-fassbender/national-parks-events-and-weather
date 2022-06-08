@@ -63,7 +63,7 @@ GIVEN a parks dashboard with form inputs
 -   To clone repository
 
 ```
-git clone git@github.com:p-fassbender/national-parks-info-and-weather.git
+git clone https://github.com/p-fassbender/national-parks-info-and-weather.git
 ```
 
 -   Open the index.html file in your default browser. (Chrome recommended)
