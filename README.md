@@ -66,11 +66,6 @@ GIVEN a parks dashboard with form inputs
 git clone git@github.com:p-fassbender/national-parks-info-and-weather.git
 ```
 
--   Install Dependencies
-
-1. Ensure you have Node.js installed on your machine. The budget tracker application will be invoked by entering node server.js in the command line.
-2. All NPM packages required for this application (Express, Compression, Mongoose, Lite-Server and Morgan) are already listed as dependencies in the package.json file. Run the command 'npm i' command in your terminal at the root directory level to install the packages.
-
 -   Open the index.html file in your default browser. (Chrome recommended)
 
 ## Screenshot
