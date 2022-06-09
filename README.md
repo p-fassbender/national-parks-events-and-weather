@@ -60,7 +60,7 @@ GIVEN a parks dashboard with form inputs
 
 </br>
 
-## Instrctions to Run App
+## Instructions to Run App
 
 -   To clone repository
 
