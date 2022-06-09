@@ -1,22 +1,36 @@
 # National Parks, Park Info and Weather Forecast
 
-## Table of Contents
+</br>
 
--   [Introduction](#introduction)
+## **The following is a link to the deployed application.**
+
+https://p-fassbender.github.io/national-parks-info-and-weather/
+
+## **The following is a link to the GitHub Repo.**
+
+https://github.com/p-fassbender/national-parks-info-and-weather
+
+</br>
+
+## **Table of Contents**
+
+-   [Motivation and Code Overview](#motivation-and-code-overview)
 -   [Techonologies Used](#technologies-used)
--   [Links](#links)
 -   [User Story](#user-story)
--   [Features](#features)
 -   [Instructions to Run App](#instructions-to-run-app)
 -   [Screenshot](#screenshot)
 
-## Introduction
+</br>
+
+## Motivation and Code Overview
 
 The available APIs shaped our project because we needed server-side APIs that would give us enough free calls each day and logically go together. For example NBA events and weather wouldn't necessarily go together because NBA games are played inside. From there we decided to use two HTML pages, each with their own .js file, sharing the same foundation CSS framework and a shared CSS file created by us.
 
 Following project guidelines we used a modal to capture and validate user input and generate dynamic HTML elements (park cards) that link to a second page; created with entirely dynamic HTML so we can display different park information, depending upon which 'park card' is clicked on the first page. The second page, single.html uses the open weather API to generate a five day forecast.
 
 The final feature to highlight is our usage of browser localStorage. Any park card from index.html that was selected will created a history link beneath the search button so if users leave the single.html page, they can easily go back to it without having to do another modal search and figure out which park they viewed previously.
+
+</br>
 
 ## Technologies Used
 
@@ -26,27 +40,13 @@ The final feature to highlight is our usage of browser localStorage. Any park ca
 -   CSS
 -   Foundation by Zurb
 
----
-
-## Links
-
-## The following is a link to the deployed website.
-
-https://p-fassbender.github.io/national-parks-info-and-weather/
-
-## The following is a link to the GitHub Repo.
-
-https://github.com/p-fassbender/national-parks-info-and-weather
-
----
+</br>
 
 ## USER STORY
 
 AS AN outdoor enthusiast
 I WANT to see information about, and a weather forecast for, a national park
-SO THAT I can plan a trip accordingly
-
-## FEATURES
+SO THAT I can plan a trip accordingly </br>
 
 GIVEN a parks dashboard with form inputs
 
@@ -58,6 +58,8 @@ GIVEN a parks dashboard with form inputs
 -   WHEN I select a national park from the homepage, THEN it is saved into a list of recently viewed parks in local storage.
 -   WHEN I load the parks dashboard homepage, THEN I am presented with a list of saved parks.
 
+</br>
+
 ## Instrctions to Run App
 
 -   To clone repository
@@ -67,6 +69,8 @@ git clone https://github.com/p-fassbender/national-parks-info-and-weather.git
 ```
 
 -   Open the index.html file in your default browser. (Chrome recommended)
+
+</br>
 
 ## Screenshot
 
