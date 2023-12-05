@@ -194,12 +194,12 @@ function getParkWeather(lat, lon) {
                 });
             }
             else {
-                console.error("Location Not Available");
+                console.error("Location not available in openweathermap api");
                 displayForecast(false)
             }
         })
         .catch(function (error) {
-            console.error("Unable to connect");
+            console.error("Unable to connect to openweathermap api");
             displayForecast(false)
         });
 };
